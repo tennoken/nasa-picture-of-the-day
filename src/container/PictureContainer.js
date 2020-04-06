@@ -8,7 +8,7 @@ const Container = styled.div`
   max-width: 768px;
   height: auto;
   background: white;
-  margin: 100px auto;
+  margin: 0 auto;
   border-radius: 15px;
 `;
 

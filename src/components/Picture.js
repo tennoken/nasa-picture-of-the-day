@@ -27,7 +27,6 @@ const Image = styled.div`
   /* 500 : x = 16 : 9   */
   padding-top: 56.25%;
   position: relative;
-  cursor: pointer;
 
   & img {
     position: absolute;
@@ -35,6 +34,7 @@ const Image = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
   }
 
   & iframe {
@@ -43,6 +43,24 @@ const Image = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+  }
+`;
+
+const HdImage = styled.div`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+
+  & img {
+    max-width: 900px;
+    max-height: 700px;
+    padding: 20px;
+    margin: 120px auto;
   }
 `;
 
@@ -88,6 +106,7 @@ const InputBlock = styled.div`
 const Picture = ({ date, onChange }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,7 +132,7 @@ const Picture = ({ date, onChange }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          margin: '0 auto',
+          margin: '100px auto',
           padding: '60px 20px',
         }}
       >
@@ -137,13 +156,15 @@ const Picture = ({ date, onChange }) => {
       <ImageBlock>
         <Image>
           {data.media_type === 'image' ? (
-            <img src={data.url} alt={data.url} />
-          ) : (
-            <iframe
-              title="youtube"
-              // style={{ width: '500px' }}
+            <img
               src={data.url}
-            ></iframe>
+              alt={data.url}
+              onClick={() => {
+                setOpen(true);
+              }}
+            />
+          ) : (
+            <iframe title="youtube" src={data.url}></iframe>
           )}
         </Image>
       </ImageBlock>
@@ -151,6 +172,15 @@ const Picture = ({ date, onChange }) => {
         {data.title} ({data.date})
       </h2>
       <p>{data.explanation}</p>
+      {open && (
+        <HdImage
+          onClick={() => {
+            setOpen(false);
+          }}
+        >
+          <img src={data.hdurl} alt="hd_img" />
+        </HdImage>
+      )}
     </PictureBlock>
   );
 };
