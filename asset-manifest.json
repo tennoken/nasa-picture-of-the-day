@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/nasa-picture-of-the-day/static/js/main.9e9bd5db.chunk.js",
-    "main.js.map": "/nasa-picture-of-the-day/static/js/main.9e9bd5db.chunk.js.map",
+    "main.js": "/nasa-picture-of-the-day/static/js/main.643c8cbc.chunk.js",
+    "main.js.map": "/nasa-picture-of-the-day/static/js/main.643c8cbc.chunk.js.map",
     "runtime-main.js": "/nasa-picture-of-the-day/static/js/runtime-main.401941a6.js",
     "runtime-main.js.map": "/nasa-picture-of-the-day/static/js/runtime-main.401941a6.js.map",
-    "static/js/2.43ee9a55.chunk.js": "/nasa-picture-of-the-day/static/js/2.43ee9a55.chunk.js",
-    "static/js/2.43ee9a55.chunk.js.map": "/nasa-picture-of-the-day/static/js/2.43ee9a55.chunk.js.map",
+    "static/js/2.8bd563e1.chunk.js": "/nasa-picture-of-the-day/static/js/2.8bd563e1.chunk.js",
+    "static/js/2.8bd563e1.chunk.js.map": "/nasa-picture-of-the-day/static/js/2.8bd563e1.chunk.js.map",
     "index.html": "/nasa-picture-of-the-day/index.html",
-    "precache-manifest.6244c199b7e5d9afac7cd1b4916acf40.js": "/nasa-picture-of-the-day/precache-manifest.6244c199b7e5d9afac7cd1b4916acf40.js",
+    "precache-manifest.0978e2a4c7b16d7eb1c2b6d6a6d1905d.js": "/nasa-picture-of-the-day/precache-manifest.0978e2a4c7b16d7eb1c2b6d6a6d1905d.js",
     "service-worker.js": "/nasa-picture-of-the-day/service-worker.js",
-    "static/js/2.43ee9a55.chunk.js.LICENSE.txt": "/nasa-picture-of-the-day/static/js/2.43ee9a55.chunk.js.LICENSE.txt"
+    "static/js/2.8bd563e1.chunk.js.LICENSE.txt": "/nasa-picture-of-the-day/static/js/2.8bd563e1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.401941a6.js",
-    "static/js/2.43ee9a55.chunk.js",
-    "static/js/main.9e9bd5db.chunk.js"
+    "static/js/2.8bd563e1.chunk.js",
+    "static/js/main.643c8cbc.chunk.js"
   ]
 }
