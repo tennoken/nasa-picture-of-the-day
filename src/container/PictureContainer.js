@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Picture from '../components/Picture';
-import { searchDate } from '../modules/search';
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import { getPicture } from '../modules/picture';
 
 const Container = styled.div`
   max-width: 768px;
@@ -13,17 +14,27 @@ const Container = styled.div`
 `;
 
 const PictureContainer = () => {
-  const date = useSelector((state) => state.search.date);
+  const { data, loading, error } = useSelector(
+    (state) => state.picture.picture
+  );
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getPicture());
+  }, [dispatch]);
+
   const onChange = (e) => {
-    const { value } = e.target;
-    dispatch(searchDate(value));
+    dispatch(getPicture(e.target.value));
   };
 
   return (
     <Container>
-      <Picture date={date} onChange={onChange} />
+      <Picture
+        data={data}
+        loading={loading}
+        error={error}
+        onChange={onChange}
+      />
     </Container>
   );
 };

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import search from './search';
+import picture from './picture';
 
 const rootReducer = combineReducers({
-  search
+  picture,
 });
 
 export default rootReducer;

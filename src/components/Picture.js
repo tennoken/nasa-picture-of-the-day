@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { initialState } from '../modules/search';
 
 const PictureBlock = styled.div`
   margin: 0 auto;
@@ -56,11 +54,20 @@ const HdImage = styled.div`
   background: rgba(0, 0, 0, 0.4);
   overflow: auto;
 
+  @media screen and (max-width: 425px) {
+    display: none;
+  }
+
   & img {
     max-width: 900px;
     max-height: 700px;
     padding: 20px;
     margin: 120px auto;
+
+    @media screen and (max-width: 768px) {
+      max-width: 600px;
+      max-height: 400px;
+    }
   }
 `;
 
@@ -103,27 +110,10 @@ const InputBlock = styled.div`
   }
 `;
 
-const Picture = ({ date, onChange }) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+const Picture = ({ data, loading, error, onChange }) => {
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const searchedDate = date ? `&date=${date}` : '';
-        const response = await axios.get(
-          `https://api.nasa.gov/planetary/apod?api_key=TiCq8KlUDfEuJccadlVrNdHIZacCULGoGJ7hZtZ4${searchedDate}`
-        );
-        setData(response.data);
-        setLoading(false);
-      } catch (e) {
-        fetchData();
-      }
-    };
-    fetchData();
-  }, [date]);
+  const date = new Date();
+  const todayDate = date.toISOString().replace(/T.*/, '').split('-').join('-');
 
   if (loading)
     return (
@@ -147,8 +137,8 @@ const Picture = ({ date, onChange }) => {
         <input
           type="date"
           onChange={onChange}
-          value={date}
-          max={initialState.date}
+          value={data.date}
+          max={todayDate}
           min="1995-06-16"
           required
         />
