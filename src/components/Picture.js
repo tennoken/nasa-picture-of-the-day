@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { getPicture } from '../modules/picture';
+import { useDispatch } from 'react-redux';
 
 const PictureBlock = styled.div`
   margin: 0 auto;
@@ -110,10 +112,38 @@ const InputBlock = styled.div`
   }
 `;
 
+const ErrorBlock = styled.div`
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+  padding: 50px 0;
+
+  & button {
+    background-color: #008cba;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+
+  @media screen and (max-width: 320px) {
+    & button {
+      font-size: 20px;
+      padding: 10px 22px;
+    }
+  }
+`;
+
 const Picture = ({ data, loading, error, onChange }) => {
   const [open, setOpen] = useState(false);
   const date = new Date();
   const todayDate = date.toISOString().replace(/T.*/, '').split('-').join('-');
+  const dispatch = useDispatch();
 
   if (loading)
     return (
@@ -128,6 +158,15 @@ const Picture = ({ data, loading, error, onChange }) => {
       >
         <Loading />
       </div>
+    );
+  if (error)
+    return (
+      <ErrorBlock>
+        <h2>오늘의 사진이 아직 등록되지 않았어요 !</h2>
+        <button onClick={() => dispatch(getPicture())}>
+          어제 사진 보러 가기
+        </button>
+      </ErrorBlock>
     );
   if (!data) return null;
 
