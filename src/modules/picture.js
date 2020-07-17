@@ -4,7 +4,7 @@ const GET_PICTURE = 'GET_PICTURE';
 const GET_PICTURE_SUCCESS = 'GET_PICTURE_SUCCESS';
 const GET_PICTURE_ERROR = 'GET_PICTURE_ERROR';
 
-export const getPicture = (date = '') => async (dispatch) => {
+export const getPicture = (date) => async (dispatch) => {
   dispatch({ type: GET_PICTURE }); //요청이 시작
   try {
     const picture = await pictureAPI.getPictureApi(date); // Api를 불러옴

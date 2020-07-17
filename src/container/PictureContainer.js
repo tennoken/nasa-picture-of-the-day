@@ -18,10 +18,11 @@ const PictureContainer = () => {
     (state) => state.picture.picture
   );
   const dispatch = useDispatch();
+  const todayDate = new Date().toISOString().substring(0, 10);
 
   useEffect(() => {
-    dispatch(getPicture());
-  }, [dispatch]);
+    dispatch(getPicture(todayDate));
+  }, [dispatch, todayDate]);
 
   const onChange = (e) => {
     dispatch(getPicture(e.target.value));
